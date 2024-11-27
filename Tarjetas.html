@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Css/Styles.css">
+</head>
+<body>
+    <script src="assets/Js/js/bootstrap.min.js"></script>
+    <script>
+        fetch('header.html')
+            .then(Response => Response.text())
+            .then(data =>{
+                document.body.insertAdjacentHTML('afterbegin', data)
+            })
+    </script>
+    <div class="container-fluid contenido">
+        
+    </div>
+    <script>
+        fetch('Footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+</html>

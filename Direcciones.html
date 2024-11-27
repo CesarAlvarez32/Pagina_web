@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Css/Styles.css">
+</head>
+<body>
+    <script src="assets/Js/js/bootstrap.min.js"></script>
+    <script>
+        fetch('header.html')
+            .then(Response => Response.text())
+            .then(data =>{
+                document.body.insertAdjacentHTML('afterbegin', data)
+            })
+    </script>
+    <div class="container-fluid contenido">
+        <div class="container dc">
+            <h5>Direcciones</h5>
+            <div class="row pf1">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img class="img-fluid ubi-icon" src="src/Iconos/pasador-de-ubicacion.png" alt="">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>María Elena Tomaza #109</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <span>Código postal 20150 - Aguascalientes - Aguascalientes</span><br>
+                                    <span>Liliana Alejandra Bonilla Salas - 4494575279</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <a href=""><h3 style="color: #d466c6;">Agregar datos del lugar</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 br">
+                            <img class="img-fluid" src="src/Iconos/borrar.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('Footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+</html>

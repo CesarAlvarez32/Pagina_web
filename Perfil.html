@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Css/Styles.css">
+</head>
+<body>
+    <script src="assets/Js/js/bootstrap.min.js"></script>
+    <script>
+        fetch('header.html')
+            .then(Response => Response.text())
+            .then(data =>{
+                document.body.insertAdjacentHTML('afterbegin', data)
+            })
+    </script>
+    <div class="container-fluid contenido">
+        <div class="container pc">
+            <div class="row row-col-2">
+                <div class="col-md-2">
+                    <div class="container fp">
+                        <div class="container-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="row dp">
+                        <div class="col-md-12">
+                            <h3>Nombre del usuario</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>Correo del usuario</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pf">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img class="img-fluid" src="src/Iconos/nueva-cuenta.png" alt="">
+                        </div>
+                        <div class="col-md">
+                            <div class="row" style="padding-top: 1%;">
+                                <div class="col-md-12">
+                                    <h5>Datos de la cuenta</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>Datos que representan tu cuenta en DANGUITO</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 flech">
+                            <a href="Datos.html"><img class="img-fluid" src="src/Iconos/flecha-correcta.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pf">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img class="img-fluid"src="src/Iconos/pasador-de-ubicacion.png" alt="">
+                        </div>
+                        <div class="col-md">
+                            <div class="row" style="padding-top: 1%;">
+                                <div class="col-md-12">
+                                    <h5>Direcciones</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>Direcciones guardadas en tu cuenta</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 flech">
+                            <a href="Direcciones.html"><img class="img-fluid" src="src/Iconos/flecha-correcta.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('Footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+</html>
