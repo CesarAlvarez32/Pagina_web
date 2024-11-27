@@ -220,7 +220,6 @@ footer a{
 }
 .pf1 input{
     width: 50%;
-    border: 0px;
 }
 .pf1 button{
     margin-top: 10%;
@@ -239,4 +238,29 @@ footer a{
 }
 .br{
     margin-top: 6%;
+}
+.ag_dr{
+    width: 100%;
+    background-color: #fefefe;
+    border-radius: 15px;   
+    margin-bottom: 2%;
+    padding: 1%;
+}
+.ag_dr input{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 4%;
+}
+.ag_dr label{
+    margin-top: 4%;
+    margin-left: 10%;
+}
+.ag_dr button{
+    border: 0px;
+    background-color: #d466c6;
+    margin-left: 46%;
+}
+.ag_dr button:hover{
+    background-color: #d466c6;
+    border: 0px;
 }
