@@ -312,3 +312,15 @@ footer a{
     margin-top: 20%;
     margin-bottom: 20%;
 }
+/* Preguntas */
+.caja2{
+    width: 80%;
+    background-color: #fefefe;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 14%;
+}
+.pregunta{
+    margin-top: 2%;
+    text-align: justify;
+}
