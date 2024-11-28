@@ -63,7 +63,7 @@ header{
 .contenido{
     width: 90%;
     margin-top: 156px;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 .caja{
@@ -99,7 +99,7 @@ header{
     background-color: #fefefe;
     padding: 2%;
     border-radius: 20px;
-    margin-top: 2%;
+    margin-top: 10%;
 }
 .login input{
     width: 90%;
@@ -263,4 +263,52 @@ footer a{
 .ag_dr button:hover{
     background-color: #d466c6;
     border: 0px;
+}
+
+/* Producto */
+.relleno_p{
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+
+/* Carrito */
+.carrito{
+    margin-top: 10%;
+    padding: 1%;
+}
+.cr_v{
+    width: 80%;
+    background-color: #fefefe;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.cr_p{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.cr_p p{
+    margin-top: 4%;
+}
+.cr_p button{
+    margin-top: 100%;
+    background: #fefefe;
+    border: 0px;
+}
+.cr_b{
+    margin-top: 2%;
+    background-color: #d466c6;
+    border: 0px;
+    color: white;
+    padding: 2% 10%;
+    font-size: 80%;
+    margin-left: 32%;
+}
+.cr_hide{
+    display: none;
+}
+.relleno{
+    margin-top: 20%;
+    margin-bottom: 20%;
 }

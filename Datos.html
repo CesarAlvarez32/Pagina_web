@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="assets/Css/Styles.css">
 </head>
 <body>
-    <script>
-        // JavaScript para habilitar/deshabilitar el formulario
-        function habilitar(){
-            document.getElementById('username').disabled = true
-        }
-    </script>
     <script src="assets/Js/js/bootstrap.min.js"></script>
     <script>
         fetch('header.html')
@@ -22,7 +16,7 @@
                 document.body.insertAdjacentHTML('afterbegin', data)
             })
     </script>
-    <div class="container-fluid contenido">
+    <div class="container contenido">
        <div class="container caja_d">
             <h3>Datos de tu cuenta</h3>
             <div class="row pf1">
@@ -42,8 +36,8 @@
                 <div class="col-md-10">
                     <form id="accountForm">
                         <div class="form-group">
-                            <label for="username">Correo electrónico</label>
-                            <input type="email" class="form-control" id="username" value="prueba@gmail.com" disabled>
+                            <label for="Correo">Correo electrónico</label>
+                            <input type="email" class="form-control" id="Correo" value="prueba@gmail.com" disabled>
                         </div>
                     </form>
                 </div>
@@ -55,8 +49,8 @@
                 <div class="col-md-10">
                     <form id="accountForm">
                         <div class="form-group">
-                            <label for="username">Telefono</label>
-                            <input type="text" class="form-control" id="username" value="449854132" disabled>
+                            <label for="Telefono">Telefono</label>
+                            <input type="text" class="form-control" id="Telefono" value="449854132" disabled>
                         </div>
                     </form>
                 </div>
