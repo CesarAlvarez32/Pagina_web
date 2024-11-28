@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Css/Styles.css">
+</head>
+<body>
+    <script src="assets/Js/js/bootstrap.min.js"></script>
+    <script>
+        fetch('header.html')
+            .then(Response => Response.text())
+            .then(data =>{
+                document.body.insertAdjacentHTML('afterbegin', data)
+            })
+    </script>
+    <div class="container-fluid contenido">
+        <div class="text-center mt-4 pt-4">
+            <h3><b>Aqui titulo de producto</b></h3>
+        </div>
+        <div class="row row-col-4 cr_hide" id="Con"> <!--Aqui esta el hide-->
+            <div class="col-dm-3 caja">
+                <div class="container cont_p">
+                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
+                    <div class="row text-center">
+                        <div class="col-md">
+                            <span>Nombre</span>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md">
+                            <span>Precio</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6 btn_comprar">
+                            <a href="Producto.html">COMPRAR</a>
+                        </div>
+                        <div class="col-md-6"> 
+                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
+                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid relleno_p cr_hide text-center" id="Sin"> <!--Aqui esta el hide-->
+            <h1>No se encontraron productos</h1>
+        </div>
+    </div>
+    <script>
+        function validarCondicion(condicion) {
+            const con = document.getElementById('Con');
+            const sin = document.getElementById('Sin');
+
+            if (condicion == true) {
+                con.classList.remove('cr_hide');
+                sin.classList.add('cr_hide');
+            } else {
+                sin.classList.remove('cr_hide');
+                con.classList.add('cr_hide');
+            }
+        }
+        validarCondicion(true);
+    </script>
+    <script>
+        fetch('Footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+</html>

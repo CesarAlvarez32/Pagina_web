@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Css/Styles.css">
+</head>
+<body>
+    <script src="assets/Js/js/bootstrap.min.js"></script>
+    <script>
+        fetch('header.html')
+            .then(Response => Response.text())
+            .then(data =>{
+                document.body.insertAdjacentHTML('afterbegin', data)
+            })
+    </script>
+    <div class="container-fluid contenido">
+        <div class="container-fluid caja2">
+            <div class="row row-col-2">
+                <h2 class="text-center">Preguntas Frecuentes (FAQ)</h2>
+                <div class="col-md-6 pregunta">
+                    <h4>1. ¿Qué tipo de productos ofrecen en su tienda?</h4>
+                    <p>Ofrecemos una amplia variedad de productos relacionados
+                         con la cultura "otaku", incluyendo figuras de acción, 
+                         camisetas, accesorios, mangas y mucho más. ¡Hay algo para todos los fanáticos!</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>2. ¿Hacen envíos internacionales?</h4>
+                    <p>Sí, realizamos envíos a todo el país. Durante el proceso de compra, podrás seleccionar tu opción de envío nacional y ver los tiempos de entrega estimados según tu ubicación.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>3. ¿Cuál es su política de devoluciones?</h4>
+                    <p>Aceptamos devoluciones dentro de los 30 días posteriores a la recepción del producto, siempre y cuando esté en su estado original y sin abrir. Si deseas devolver un artículo, por favor contáctanos a nuestro correo de atención al cliente para obtener instrucciones. Queremos asegurarnos de que estés satisfecho con tu compra.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>4. ¿Cómo puedo realizar un pedido?</h4>
+                    <p>Puedes realizar un pedido fácilmente a través de nuestro sitio web. Simplemente navega por nuestras categorías, selecciona los productos que deseas, añádelos a tu carrito y sigue el proceso de pago. Aceptamos varias formas de pago, incluyendo tarjetas de crédito, transferencias bancarias y métodos locales.
+
+                    </p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>5. ¿Tienen algún programa de fidelidad o descuentos?</h4>
+                    <p>Sí, ofrecemos un programa de fidelidad donde puedes acumular puntos por cada compra que realices. Estos puntos se pueden canjear por descuentos en futuras compras. Además, ocasionalmente lanzamos promociones y descuentos especiales para nuestros clientes locales, así que asegúrate de suscribirte a nuestro boletín.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>6. ¿Puedo cancelar o modificar mi pedido después de realizarlo?</h4>
+                    <p>Si necesitas cancelar o modificar tu pedido, contáctanos lo antes posible. Si el pedido aún no ha sido procesado, haremos lo posible por ayudarte. Sin embargo, si ya ha sido enviado, tendrás que seguir el proceso de devolución.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>7. ¿Cómo puedo estar al tanto de las novedades y lanzamientos de productos?</h4>
+                    <p>Te recomendamos suscribirte a nuestro boletín informativo y seguirnos en nuestras redes sociales. Publicamos regularmente sobre nuevos lanzamientos, promociones y eventos especiales en nuestra comunidad.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>8. ¿Ofrecen productos personalizados o a medida?</h4>
+                    <p>En este momento, no ofrecemos productos personalizados. Sin embargo, estamos constantemente ampliando nuestro catálogo con productos que resuenen con los gustos de nuestra comunidad local, así que mantente atento a nuevas adiciones.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>9. ¿Qué hago si recibo un producto dañado o defectuoso?</h4>
+                    <p>Si recibes un producto dañado o defectuoso, por favor contáctanos dentro de los 7 días posteriores a la recepción. Necesitaremos fotos del daño y te ayudaremos a gestionar un reemplazo o reembolso. Queremos que estés feliz con tu compra.</p>
+                </div>
+                <div class="col-md-6 pregunta">
+                    <h4>10. ¿Tienen alguna tienda física donde pueda ver los productos?</h4>
+                    <p>Actualmente, operamos únicamente en línea. Sin embargo, estamos trabajando en la posibilidad de participar en convenciones y eventos locales donde podrás ver nuestros productos en persona y conocer a otros fanáticos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('Footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+</html>

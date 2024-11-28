@@ -7,7 +7,6 @@ html, body{
     padding: 0; /* Elimina el relleno por defecto */
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
-
 /* Header */
 header{
     width: 100%;
@@ -63,7 +62,7 @@ header{
 .contenido{
     width: 90%;
     margin-top: 156px;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 .caja{
@@ -99,7 +98,7 @@ header{
     background-color: #fefefe;
     padding: 2%;
     border-radius: 20px;
-    margin-top: 2%;
+    margin-top: 10%;
 }
 .login input{
     width: 90%;
@@ -128,7 +127,6 @@ header{
 .p{
     margin-left: 64%;
 }
-
 /* Footer */
 .footer1{
     width: 100%;
@@ -220,7 +218,6 @@ footer a{
 }
 .pf1 input{
     width: 50%;
-    border: 0px;
 }
 .pf1 button{
     margin-top: 10%;
@@ -239,4 +236,132 @@ footer a{
 }
 .br{
     margin-top: 6%;
+}
+.ag_dr{
+    width: 100%;
+    background-color: #fefefe;
+    border-radius: 15px;   
+    margin-bottom: 2%;
+    padding: 1%;
+}
+.ag_dr input{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 4%;
+}
+.ag_dr label{
+    margin-top: 4%;
+    margin-left: 10%;
+}
+.ag_dr button{
+    border: 0px;
+    background-color: #d466c6;
+    margin-left: 46%;
+}
+.ag_dr button:hover{
+    background-color: #d466c6;
+    border: 0px;
+}
+
+/* Productos */
+.relleno_p{
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+/* Carrito */
+.carrito{
+    margin-top: 10%;
+    padding: 1%;
+}
+.cr_v{
+    width: 80%;
+    background-color: #fefefe;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.cr_p{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.cr_p p{
+    margin-top: 4%;
+}
+.cr_p button{
+    margin-top: 100%;
+    background: #fefefe;
+    border: 0px;
+}
+.cr_b{
+    margin-top: 2%;
+    background-color: #d466c6;
+    border: 0px;
+    color: white;
+    padding: 2% 10%;
+    font-size: 80%;
+    margin-left: 32%;
+}
+.cr_hide{
+    display: none;
+}
+.relleno{
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+/* Preguntas */
+.caja2{
+    width: 80%;
+    background-color: #fefefe;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 14%;
+}
+.pregunta{
+    margin-top: 2%;
+    text-align: justify;
+}
+/* Producto */
+.producto{
+    width: 60%;
+    background-color: #fefefe;
+    padding: 1%;
+    margin-top: 12%;
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+.producto h4{
+    margin-top: 1%;
+}
+.btn_p{
+    margin-top: 22%;
+    padding: 1%;
+}
+.btn_p button{
+    margin-top: 2%;
+    background-color: #d466c6;
+    color: white;
+    border: 0px;
+    padding: 2% 40%;
+}
+.btn_p img{
+    margin-left: 4%;
+    width: 40%;
+}
+.comentarios{
+    width: 60%;
+    background-color: #fefefe;
+    padding: 1%;
+    margin-top: 1%;
+    border-radius: 15px;
+}
+.responsive-textarea {
+    width: 100%; /* Ajusta el ancho al 100% */
+    height: 100px; /* Puedes ajustar la altura inicial según tus necesidades */
+    resize: vertical; /* Permite que el usuario ajuste la altura */
+    padding: 10px; /* Agrega un poco de espacio interno */
+    border: 1px solid #ffb9b8; /* Estilo de borde */
+    border-radius: 4px; /* Esquinas redondeadas */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    resize: none;
 }
