@@ -7,7 +7,6 @@ html, body{
     padding: 0; /* Elimina el relleno por defecto */
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
-
 /* Header */
 header{
     width: 100%;
@@ -128,7 +127,6 @@ header{
 .p{
     margin-left: 64%;
 }
-
 /* Footer */
 .footer1{
     width: 100%;
@@ -265,12 +263,11 @@ footer a{
     border: 0px;
 }
 
-/* Producto */
+/* Productos */
 .relleno_p{
     margin-top: 10%;
     margin-bottom: 20%;
 }
-
 /* Carrito */
 .carrito{
     margin-top: 10%;
@@ -323,4 +320,48 @@ footer a{
 .pregunta{
     margin-top: 2%;
     text-align: justify;
+}
+/* Producto */
+.producto{
+    width: 60%;
+    background-color: #fefefe;
+    padding: 1%;
+    margin-top: 12%;
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+.producto h4{
+    margin-top: 1%;
+}
+.btn_p{
+    margin-top: 22%;
+    padding: 1%;
+}
+.btn_p button{
+    margin-top: 2%;
+    background-color: #d466c6;
+    color: white;
+    border: 0px;
+    padding: 2% 40%;
+}
+.btn_p img{
+    margin-left: 4%;
+    width: 40%;
+}
+.comentarios{
+    width: 60%;
+    background-color: #fefefe;
+    padding: 1%;
+    margin-top: 1%;
+    border-radius: 15px;
+}
+.responsive-textarea {
+    width: 100%; /* Ajusta el ancho al 100% */
+    height: 100px; /* Puedes ajustar la altura inicial según tus necesidades */
+    resize: vertical; /* Permite que el usuario ajuste la altura */
+    padding: 10px; /* Agrega un poco de espacio interno */
+    border: 1px solid #ffb9b8; /* Estilo de borde */
+    border-radius: 4px; /* Esquinas redondeadas */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    resize: none;
 }
