@@ -20,10 +20,10 @@
         <div class="text-center mt-4 pt-4">
             <h3><b>Lo más visto</b></h3>
         </div>
-        <div class="row row-col-4">
+        <div  id="productos-container" class="row row-col-4">
             <div class="col-dm-3 caja">
                 <div class="container cont_p">
-                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
+                    <img src="Imagen" class="img-fluid" alt="">
                     <div class="row text-center">
                         <div class="col-md">
                             <span>Nombre</span>
@@ -126,5 +126,62 @@
                 document.body.insertAdjacentHTML('beforeend', data);
             });
     </script>
+    <script>
+        fetch('http://localhost:5000/api/Product/')
+            .then(response => response.json())
+            .then(data => {
+                const productosContainer = document.getElementById('productos-container');
+                productosContainer.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevos productos
+    
+                data.forEach(producto => {
+                    const productoElement = `
+                        <div class="col-dm-3 caja">
+                            <div class="container cont_p">
+
+                                <!-- Nombre del producto -->
+                                <div class="row text-center">
+                                    <div class="col-md">
+                                        <span>${producto.nombreProducto}</span>
+                                    </div>
+                                </div>
+
+                               <!-- Imagen -->
+                                <img src="${producto.imagen}" class="img-fluid">
+                                
+                                <!-- Descripción del producto -->
+                                <div class="row text-center">
+                                    <div class="col-md">
+                                        <span>${producto.descripcion || 'Descripción no disponible'}</span>
+                                    </div>
+                                </div>
+    
+                                <!-- Precio -->
+                                <div class="row text-center">
+                                    <div class="col-md">
+                                        <span>$${producto.precio}</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Botones de acción -->
+                                <div class="row mt-2">
+                                    <div class="col-md-6 btn_comprar">
+                                        <a href="Producto.html">COMPRAR</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
+                                        <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productosContainer.innerHTML += productoElement;
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los productos:', error);
+            });
+    </script>
+    
 </body>
 </html>

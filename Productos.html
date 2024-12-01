@@ -21,36 +21,65 @@
             <h3><b>Aqui titulo de producto</b></h3>
         </div>
         <div class="row row-col-4 cr_hide" id="Con"> <!--Aqui esta el hide-->
-            <div class="col-dm-3 caja">
-                <div class="container cont_p">
-                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Nombre</span>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Precio</span>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 btn_comprar">
-                            <a href="Producto.html">COMPRAR</a>
-                        </div>
-                        <div class="col-md-6"> 
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Los productos serán agregados aquí dinámicamente -->
         </div>
         <div class="container-fluid relleno_p cr_hide text-center" id="Sin"> <!--Aqui esta el hide-->
             <h1>No se encontraron productos</h1>
         </div>
     </div>
     <script>
+        // Llamada a la API para obtener los productos
+        fetch('http://127.0.0.1:5000/api/Product')
+            .then(response => response.json())
+            .then(productos => {
+                console.log(data); 
+                const contenedor = document.getElementById('Con');
+                if (productos.length > 0) {
+                    productos.forEach(producto => {
+                        // Crear un nuevo elemento para cada producto
+                        const productoHTML = `
+                            <div class="col-dm-3 caja">
+                                <div class="container cont_p">
+                                
+                                    <div class="row text-center">
+                                        <div class="col-md">
+                                            <span>${producto.nombre}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row text-center">
+                                        <div class="col-md">
+                                            <span>${producto.precio}</span>
+                                        </div>
+                                        <div class="col-md">
+                                            <span>${producto.descripcion}</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6 btn_comprar">
+                                            <a href="Producto.html">COMPRAR</a>
+                                        </div>
+                                        <div class="col-md-6"> 
+                                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
+                                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        contenedor.innerHTML += productoHTML; // Agregar el producto al contenedor
+                    });
+                    validarCondicion(true); // Mostrar productos si se encuentran
+                } else {
+                    validarCondicion(false); // Si no hay productos, mostrar mensaje
+                }
+            })
+            .catch(error => {
+                console.error('Error al conectar con la API:', error);
+                validarCondicion(false); // Mostrar mensaje de error si no se pueden cargar los productos
+            });
+
         function validarCondicion(condicion) {
             const con = document.getElementById('Con');
             const sin = document.getElementById('Sin');
@@ -63,7 +92,6 @@
                 con.classList.add('cr_hide');
             }
         }
-        validarCondicion(true);
     </script>
     <script>
         fetch('Footer.html')
