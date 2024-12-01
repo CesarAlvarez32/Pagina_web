@@ -9,22 +9,64 @@
 </head>
 <body>
     <script src="assets/Js/js/bootstrap.min.js"></script>
+    
+    <!-- Cargar el header -->
     <script>
         fetch('header.html')
             .then(Response => Response.text())
             .then(data =>{
-                document.body.insertAdjacentHTML('afterbegin', data)
-            })
+                document.body.insertAdjacentHTML('afterbegin', data);
+            });
     </script>
+
     <div class="container-fluid contenido">
-        
+        <!-- Contenedor donde se mostrará el producto -->
+        <div id="producto-detalles" class="row text-center mt-4 pt-4">
+            <h3><b>Detalles del Producto</b></h3>
+            <div id="producto-info" class="col-md-12">
+                <!-- Aquí se mostrarán los detalles del producto -->
+            </div>
+        </div>
     </div>
+
+    <!-- Cargar el footer -->
     <script>
         fetch('Footer.html')
             .then(response => response.text())
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data);
             });
+    </script>
+
+    <script>
+        // Recuperar el producto desde localStorage
+        const productoSeleccionado = localStorage.getItem('productoSeleccionado');
+        
+        if (productoSeleccionado) {
+            // Parsear el producto desde JSON
+            const producto = JSON.parse(productoSeleccionado);
+            
+            // Mostrar los detalles del producto en el contenedor
+            const productoInfoContainer = document.getElementById('producto-info');
+            
+            // Crear los elementos para mostrar la información del producto
+            productoInfoContainer.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="${producto.imagen}" class="img-fluid" alt="${producto.nombreProducto}">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>${producto.nombreProducto}</h4>
+                        <p>${producto.descripcion || 'Descripción no disponible'}</p>
+                        <p><strong>Precio: </strong>$${producto.precio}</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Si no hay producto en el localStorage, mostrar un mensaje
+            const productoInfoContainer = document.getElementById('producto-info');
+            productoInfoContainer.innerHTML = `<p>No se ha seleccionado un producto.</p>`;
+        }
     </script>
 </body>
 </html>

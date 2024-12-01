@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,181 +8,128 @@
     <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/Css/Styles.css">
 </head>
+
 <body>
     <script src="assets/Js/js/bootstrap.min.js"></script>
-    <script>
-        fetch('header.html')
-            .then(Response => Response.text())
-            .then(data =>{
-                document.body.insertAdjacentHTML('afterbegin', data)
-            })
-    </script>
+
+    <!-- Contenedor para los productos -->
     <div class="container-fluid contenido">
         <div class="text-center mt-4 pt-4">
             <h3><b>Lo más visto</b></h3>
         </div>
-        <div  id="productos-container" class="row row-col-4">
-            <div class="col-dm-3 caja">
-                <div class="container cont_p">
-                    <img src="Imagen" class="img-fluid" alt="">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Nombre</span>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Precio</span>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 btn_comprar">
-                            <a href="Producto.html">COMPRAR</a>
-                        </div>
-                        <div class="col-md-6"> 
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                        </div>
+        <div id="productos-container" class="row row-col-4">
+            <!-- Aquí irá el contenido de los productos -->
+        </div>
+    </div>
+
+    <!-- Template para cada caja de producto -->
+    <template id="producto-template">
+        <div class="col-dm-3 caja">
+            <div class="container cont_p">
+                <div class="row text-center">
+                    <div class="col-md">
+                        <span class="nombre-producto"></span>
                     </div>
                 </div>
-            </div>
-            <div class="col-dm-3 caja">
-                <div class="container cont_p">
-                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Nombre</span>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Precio</span>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 btn_comprar">
-                            <a href="Producto.html">COMPRAR</a>
-                        </div>
-                        <div class="col-md-6"> 
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                        </div>
+                <img src="" class="img-fluid" alt="">
+
+                <div class="row text-center">
+                    <div class="col-md">
+                        <span class="descripcion-producto">Descripción no disponible</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-dm-3 caja">
-                <div class="container cont_p">
-                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Nombre</span>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Precio</span>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 btn_comprar">
-                            <a href="Producto.html">COMPRAR</a>
-                        </div>
-                        <div class="col-md-6"> 
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                        </div>
+                <div class="row text-center">
+                    <div class="col-md">
+                        <span class="precio-producto"></span>
                     </div>
                 </div>
-            </div>
-            <div class="col-dm-3 caja">
-                <div class="container cont_p">
-                    <img src="src/Productos/Accesorios/emo accessories.png" class="img-fluid" alt="">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Nombre</span>
-                        </div>
+                <div class="row mt-2">
+                    <div class="col-md-6 btn_comprar">
+                        <button id="comprar-btn" class="btn btn-primary">Comprar</button>
                     </div>
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <span>Precio</span>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 btn_comprar">
-                            <a href="Producto.html">COMPRAR</a>
-                        </div>
-                        <div class="col-md-6"> 
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                            <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                        </div>
+                    <div class="col-md-6">
+                        <a href="Carrito.html"><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
+                        <!-- Aquí agregamos el evento al <a> en lugar de al <img> -->
+                        <a href="#" class="favorito-link"><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </template>
+
     <script>
+        // Cargar el header y footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+
         fetch('Footer.html')
             .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
-    <script>
+            .then(data => document.body.insertAdjacentHTML('beforeend', data));
+
+        // Cargar los productos desde la API
         fetch('http://localhost:5000/api/Product/')
             .then(response => response.json())
             .then(data => {
                 const productosContainer = document.getElementById('productos-container');
-                productosContainer.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevos productos
-    
+                const productoTemplate = document.getElementById('producto-template').content;
+
                 data.forEach(producto => {
-                    const productoElement = `
-                        <div class="col-dm-3 caja">
-                            <div class="container cont_p">
+                    const productoClone = productoTemplate.cloneNode(true);
 
-                                <!-- Nombre del producto -->
-                                <div class="row text-center">
-                                    <div class="col-md">
-                                        <span>${producto.nombreProducto}</span>
-                                    </div>
-                                </div>
+                    // Rellenar el contenido del producto
+                    productoClone.querySelector('.nombre-producto').textContent = producto.nombreProducto;
+                    productoClone.querySelector('img').src = producto.imagen;
+                    productoClone.querySelector('.descripcion-producto').textContent = producto.descripcion || 'Descripción no disponible';
+                    productoClone.querySelector('.precio-producto').textContent = `$${producto.precio}`;
 
-                               <!-- Imagen -->
-                                <img src="${producto.imagen}" class="img-fluid">
-                                
-                                <!-- Descripción del producto -->
-                                <div class="row text-center">
-                                    <div class="col-md">
-                                        <span>${producto.descripcion || 'Descripción no disponible'}</span>
-                                    </div>
-                                </div>
-    
-                                <!-- Precio -->
-                                <div class="row text-center">
-                                    <div class="col-md">
-                                        <span>$${producto.precio}</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Botones de acción -->
-                                <div class="row mt-2">
-                                    <div class="col-md-6 btn_comprar">
-                                        <a href="Producto.html">COMPRAR</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a href=""><img class="icono img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                                        <a href=""><img class="icono img-fluid" src="src/Iconos/favorito.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    productosContainer.innerHTML += productoElement;
+                    // Agregar el manejador de clic para almacenar el producto en localStorage
+                    const comprarBtn = productoClone.querySelector('.btn.btn-primary');
+                    comprarBtn.addEventListener('click', () => {
+                        localStorage.setItem('productoSeleccionado', JSON.stringify(producto)); // Almacenar el producto en localStorage
+                        window.location.href = "Producto.html";
+                    });
+
+                    // Agregar el manejador de clic para agregar el producto a favoritos
+                    const favBtn = productoClone.querySelector('.favorito-link'); // Apuntar al <a> del favorito
+                    favBtn.addEventListener('click', (event) => {
+                        event.preventDefault();  // Evitar que el enlace se ejecute de forma predeterminada
+                        localStorage.setItem('productoSeleccionado', JSON.stringify(producto)); // Almacenar el producto en localStorage
+                        alert("Producto agregado a favoritos");
+                        window.location.href = "Favoritos.html"; // Redirigir a la página de favoritos
+                    });
+                    const carritoBtn = productoClone.querySelector('a[href="Carrito.html"]'); // Apuntar al <a> del carrito
+                    carritoBtn.addEventListener('click', (event) => {
+                        event.preventDefault();  // Evitar que el enlace se ejecute de forma predeterminada
+
+                        // Obtener productos actuales del carrito en localStorage
+                        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+                        // Verificar si el producto ya está en el carrito
+                        const productoExistente = carrito.find(item => item.id === producto.id);
+                        if (productoExistente) {
+                            alert("Este producto ya está en el carrito.");
+                        } else {
+                            // Si no está en el carrito, agregarlo
+                            carrito.push(producto);
+                            localStorage.setItem('carrito', JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
+                            alert("Producto agregado al carrito");
+                        }
+
+                     /*   // Limpiar el carrito en localStorage después del alert
+                        localStorage.removeItem('carrito'); */ 
+                        
+                    });
+
+                    // Agregar el producto al contenedor
+                    productosContainer.appendChild(productoClone);
                 });
             })
             .catch(error => {
                 console.error('Error al cargar los productos:', error);
             });
+
     </script>
-    
 </body>
+
 </html>

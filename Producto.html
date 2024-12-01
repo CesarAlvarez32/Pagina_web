@@ -3,48 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Producto con PayPal Sandbox</title>
     <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/Css/Styles.css">
 </head>
 <body>
     <script src="assets/Js/js/bootstrap.min.js"></script>
+
     <script>
         fetch('header.html')
-            .then(Response => Response.text())
-            .then(data =>{
-                document.body.insertAdjacentHTML('afterbegin', data)
-            })
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+            });
     </script>
+
     <div class="container-fluid contenido">
         <div class="container-fluid producto">
             <div class="row row-col-2">
                 <div class="col-md-4">
-                    <img class="img-fluid" src="src/Productos/Figuras/otaku chibi figure.png" alt="">
+                    <img id="product-image" class="img-fluid" src="src/Productos/Figuras/default.png" alt="Imagen del producto">
                 </div>
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4>Nombre del producto</h4>
+                                    <h4 id="product-name">Cargando producto...</h4>
                                 </div>
                                 <div class="col-md-12">
-                                    <span>Descirpcion</span>
+                                    <span id="product-description">Cargando descripción...</span>
                                 </div>
                                 <div class="col-md-12">
-                                    <span style="color:red">$0,000 MXN</span>
+                                    <span id="product-price" style="color:red">$0.00 MXN</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12 btn_p">
                             <div class="row">
+                                <div id="paypal-button-container"></div>
+
+                                <p id="result-message"></p>
+                        
                                 <div class="col-md-8">
-                                    <button class="">Comprar</button>
+                                    <button class="btn btn-primary" id="btn-comprar">Comprar</button>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href=""><img class="img-fluid" src="src/Iconos/carro-de-la-compra.png" alt=""></a>
-                                    <a href=""><img class="img-fluid" src="src/Iconos/favorito.png" alt=""></a>
+                                    <a href="#"><img class="img-fluid" src="src/Iconos/carro-de-la-compra.png" alt="Carrito"></a>
+                                    <a href="#"><img class="img-fluid" src="src/Iconos/favorito.png" alt="Favorito"></a>
                                 </div>
                             </div>
                         </div>
@@ -52,6 +58,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Template para los productos -->
         <div class="container-fluid comentarios">
             <div class="row">
                 <h5>Comentarios</h5>
@@ -74,13 +82,14 @@
                             <small class="text-muted">Fecha dd/mm/aa</small>
                         </div>
                         <div class="col-md-12" style="margin-top: 1%; text-align: justify;">
-                            Aqui comentario
+                            Aquí comentario
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         fetch('Footer.html')
             .then(response => response.text())
@@ -88,5 +97,59 @@
                 document.body.insertAdjacentHTML('beforeend', data);
             });
     </script>
+
+    <!-- SDK de PayPal configurado para Sandbox -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=ARyP40JCLu1IJtx7iR7-XID8s4bqI0HsXwxUD4MzjJUG_ajAnRpVV76FoTUnG-IMi0ie_7jAPiRjAFqP&currency=MXN">
+    </script>
+
+    <script>
+        // Configuración inicial de los datos
+        const defaultProduct = {
+            nombreProducto: "Producto por defecto",
+            descripcion: "Descripción del producto por defecto.",
+            precio: "10.00",
+            imagen: "src/Productos/Figuras/default.png"
+        };
+
+        // Recuperar los datos del producto desde el localStorage
+        const product = JSON.parse(localStorage.getItem('productoSeleccionado')) || defaultProduct;
+
+        // Mostrar los datos del producto en la página
+        document.getElementById('product-name').textContent = product.nombreProducto;
+        document.getElementById('product-description').textContent = product.descripcion;
+        document.getElementById('product-price').textContent = `$${product.precio} MXN`  ;
+        document.getElementById('product-image').src = product.imagen;
+
+        // Configurar PayPal con el precio del producto
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: product. precio +(product.precio *.16) // Precio dinámico del producto
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    document.getElementById('result-message').innerText = 
+                        `Gracias por tu compra, ${details.payer.name.given_name}!`;
+                });
+            },
+            onError: function(err) {
+                console.error('Error de PayPal:', err);
+                document.getElementById('result-message').innerText = 
+                    'Hubo un problema con el pago. Por favor, inténtalo de nuevo.';
+            }
+        }).render('#paypal-button-container'); // Renderizar botón de PayPal
+
+        // Almacenar el producto seleccionado cuando se haga clic en "Comprar"
+        document.getElementById('btn-comprar').addEventListener('click', () => {
+            localStorage.setItem('productoSeleccionado', JSON.stringify(product));
+        });
+    </script>
+
 </body>
 </html>

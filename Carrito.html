@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrito de Compras</title>
     <link rel="stylesheet" href="assets/Css/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/Css/Styles.css">
 </head>
+<style>
+    #paypal-button-container {
+    transform: scale(0.8); /* Reducir el tamaño al 80% */
+    margin: 0 auto; 
+}
+</style>
 <body>
     <script src="assets/Js/js/bootstrap.min.js"></script>
     <script>
@@ -17,58 +23,13 @@
             })
     </script>
     <div class="container-fluid contenido">
-        <div class="container-fluid carrito cr_hide" id="Con"> <!--Aqui esta el hide-->
+        <div class="container-fluid carrito cr_hide" id="Con">
             <div class="row row-col-2">
                 <div class="col-md-6">
                     <div class="container cr_v">
                         <h6 class="text-center"><b>TODOS LOS ARTICULOS</b></h6>
-                        <div class="row">
-                            <div class="col-md-12 cr_p">
-                                <div class="row row-col-3">
-                                    <div class="col-md-1">
-                                        <button><img class="img-fluid" src="src/Iconos/borrar.png" alt=""></button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img class="img-fluid" src="src/Productos/Cosplay/cosplay de Attack on Titan.png" alt="">
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <span>Nombre del articulo<span>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <small class="text-muted">Precio</small>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <p>Cantidad <label id="cantidad">1</label></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 cr_p">
-                                <div class="row row-col-3">
-                                    <div class="col-md-1">
-                                        <button><img class="img-fluid" src="src/Iconos/borrar.png" alt=""></button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img class="img-fluid" src="src/Productos/Cosplay/cosplay de Attack on Titan.png" alt="">
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <span>Nombre del articulo<span>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <small class="text-muted">Precio</small>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <p>Cantidad <label id="cantidad">1</label></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row" id="productosCarrito">
+                            <!-- Los productos se cargarán aquí -->
                         </div>
                     </div>
                 </div>
@@ -87,33 +48,10 @@
                                     <div class="col-md">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <span>Nombre del articulo<span>
+                                                <span>Cosplay de Attack on Titan</span>
                                             </div>
                                             <div class="col-md-12">
-                                                <small class="text-muted">Precio</small>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <p>Cantidad <label id="cantidad">1</label></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 cr_p">
-                                <div class="row row-col-3">
-                                    <div class="col-md-1">
-                                        <button><img class="img-fluid" src="src/Iconos/borrar.png" alt=""></button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img class="img-fluid" src="src/Productos/Cosplay/cosplay de Attack on Titan.png" alt="">
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <span>Nombre del articulo<span>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <small class="text-muted">Precio</small>
+                                                <small class="text-muted">1500</small>
                                             </div>
                                             <div class="col-md-12">
                                                 <p>Cantidad <label id="cantidad">1</label></p>
@@ -123,24 +61,27 @@
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
-                                <span><b>Pago total: </b></span><label for="" id="CT" style="color: red;">$0,000</label>
+                                <span><b>Pago total: </b></span><label for="" id="CT" style="color: red;">$0.00</label>
                             </div>
                             <div class="col-md-12">
-                                <button class="cr_b">PAGAR AHORA</button>
+                                <button class="cr_b" id="btnPagar">PAGAR AHORA</button>
+                                <div> <!-- Caja pra paypal  -->
+                                <div id="paypal-button-container"></div>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid carrito cr_hide" id="Sin"> <!--Aqui esta el hide-->
+        <div class="container-fluid carrito cr_hide" id="Sin">
             <div class="row row-col-2">
                 <div class="col-md-6">
                     <div class="container cr_v">
                         <h6 class="text-center"><b>TODOS LOS ARTICULOS</b></h6>
                         <div class="row">
                             <div class="col-md-12 relleno text-center">
-                                <h5>No existen articulos en el carrito</h5>
+                                <h5 id="sinArticulosMensaje">No existen artículos en el carrito</h5>
                             </div>
                         </div>
                     </div>
@@ -150,13 +91,17 @@
                         <h6 class="text-center"><b>RESUMEN DEL PEDIDO</b></h6>
                         <div class="row">
                             <div class="col-md-12 relleno text-center">
-                                <h5>Sin articulos</h5>
+                                <h5 id="sinArticulosResumen">Sin artículos</h5>
                             </div>
                             <div class="col-md-12 text-center">
-                                <span><b>Pago total: </b></span><label for="" id="CT" style="color: red;">$0,000</label>
+                                <span><b>Pago total: </b></span><label for="" id="CT" style="color: red;">$0.00</label>
                             </div>
                             <div class="col-md-12">
-                                <button class="cr_b">PAGAR AHORA</button>
+                                <button class="cr_b" id="btnPagarSinArticulos">PAGAR AHORA</button>
+                               
+                                <div>
+                               
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -186,5 +131,112 @@
                 document.body.insertAdjacentHTML('beforeend', data);
             });
     </script>
+    <script>
+        function cargarCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const carritoCon = document.getElementById('Con');
+            const carritoSin = document.getElementById('Sin');
+            const totalLabel = document.getElementById('CT');
+            const sinArticulosMensaje = document.getElementById('sinArticulosMensaje');
+            const sinArticulosResumen = document.getElementById('sinArticulosResumen');
+            const btnPagar = document.getElementById('btnPagar');
+            const btnPagarSinArticulos = document.getElementById('btnPagarSinArticulos');
+
+            // Si el carrito tiene productos, mostramos la vista "Con productos"
+            if (carrito.length > 0) {
+                carritoCon.classList.remove('cr_hide');
+                carritoSin.classList.add('cr_hide');
+
+                // Limpiar el contenido anterior
+                const contenedorProductos = document.getElementById('productosCarrito');
+                contenedorProductos.innerHTML = '';
+
+                // Variables para calcular el total
+                let total = 0;
+
+                // Recorrer los productos del carrito y agregarlos al HTML
+                carrito.forEach(producto => {
+                    const productoDiv = document.createElement('div');
+                    productoDiv.classList.add('col-md-12', 'cr_p');
+                    productoDiv.innerHTML = `
+                        <div class="row row-col-3">
+                            <div class="col-md-1">
+                                <button><img class="img-fluid" src="src/Iconos/borrar.png" alt="" onclick="eliminarDelCarrito('${producto.id}')"></button>
+                            </div>
+                            <div class="col-md-2">
+                                <img class="img-fluid" src="${producto.imagen}" alt="">
+                            </div>
+                            <div class="col-md">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span>${producto.nombreProducto}</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <small class="text-muted">$${producto.precio}</small>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>Cantidad <label id="cantidad">1</label></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    contenedorProductos.appendChild(productoDiv);
+                    total += producto.precio+(producto.precio * .16); // Calculando el total
+                });
+
+                // Actualizar el total en la interfaz
+                totalLabel.textContent = `$${total.toFixed(2)}`;
+                btnPagar.textContent = "PAGAR AHORA"; // Cambiar texto del botón
+            } else {
+                // Si el carrito está vacío, mostrar la vista "Sin productos"
+                carritoCon.classList.add('cr_hide');
+                carritoSin.classList.remove('cr_hide');
+
+                // Modificar los textos cuando no haya productos
+                sinArticulosMensaje.textContent = "No tienes productos en el carrito";
+                sinArticulosResumen.textContent = "Aún no has agregado productos";
+                btnPagarSinArticulos.textContent = "AGREGAR PRODUCTOS"; // Cambiar texto del botón
+            }
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarDelCarrito(id) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito = carrito.filter(producto => producto.id !== id); // Filtrar el producto que no se desea eliminar
+            localStorage.setItem('carrito', JSON.stringify(carrito)); // Actualizar el carrito en localStorage
+            cargarCarrito(); // Recargar el carrito después de eliminar el producto
+        }
+
+        // Llamar la función al cargar la página
+        window.onload = cargarCarrito;
+    </script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=ARyP40JCLu1IJtx7iR7-XID8s4bqI0HsXwxUD4MzjJUG_ajAnRpVV76FoTUnG-IMi0ie_7jAPiRjAFqP&components=buttons&currency=MXN">
+    
+</script>
+<script>
+    paypal.Buttons({
+    createOrder: function(data, actions) {
+        // Crea el pedido con el total que has calculado
+        return actions.order.create({
+        purchase_units: [{
+            amount: {
+            value: document.getElementById('CT').textContent.replace('$', ''),
+            currency_code: 'MXN',
+            }
+        }]
+        });
+    },
+    onApprove: function(data, actions) {
+        // Aprobación del pago y captura del pago
+        return actions.order.capture().then(function(details) {
+            alert('Pago realizado con éxito');
+            // Realizar otras acciones necesarias
+        });
+    }
+    }).render('#paypal-button-container');
+</script>
 </body>
 </html>
